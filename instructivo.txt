@@ -1,0 +1,6 @@
+Instalar nodejs (bajar de https://nodejs.org/es/download/ ) 
+
+crear carpeta
+ejecutar:
+npm init (luego responder todas las preguntas)
+npm install express mongoose
