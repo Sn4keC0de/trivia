@@ -1,33 +1,58 @@
-doctype html
-html
-  head
-    script(type='text/javascript' src='script.js')
+extends layout
+
+link(href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css")
+
+block content
+  header.jumbotron
+    hr.my-4
+    p Bienvenido a mi trivia!
+
       
-  body
-    h1 Trivia
-    h4 Nueva pregunta 
-    form(action='/question' method='post')
-      input(name='question' placeholder='Pregunta')
-      br  
-      input(name='answerA' placeholder='Respuesta A')
-      input(name='checkboxA' type='checkbox' value='true')
-      br
-      input(name='answerB' placeholder='Respuesta B')  
-      input(name='checkboxB' type='checkbox' value='true')
-      br
-      input(name='answerC' placeholder='Respuesta C')
-      input(name='checkboxC' type='checkbox' value='true')  
-      br
-      input(name='answerD' placeholder='Respuesta D')  
-      input(name='checkboxD' type='checkbox' value='true')
-      br
-      input(type='submit' value='Guardar')
-    br      
-    ol
-      each question in questions
-        li= question.title
-          ol(type='A')
-            each answer in question.answers
-              li(id=answer._id) #{answer.title}
-                input(type='radio' id=answer._id name=question._id value=answer.isRight ? 'true' : 'false' onclick='chequearRespuesta(this)' rta=answer._id)
-                   
+      <!------ Trivia ---------->
+
+      div(class="container-fluid bg-info")
+          div(class="modal-dialog")
+            div(class="modal-content")
+              div(class="modal-header")
+              
+              div(class="modal-body")
+                  div(class="col-xs-3 col-xs-offset-5")
+                    div(id="loadbar" style="display: none;")
+                        div(class="blockG" id="rotateG_01")
+                        div(class="blockG" id="rotateG_02")
+                        div(class="blockG" id="rotateG_03")
+                        div(class="blockG" id="rotateG_04")
+                        div(class="blockG" id="rotateG_05")
+                        div(class="blockG" id="rotateG_06")
+                        div(class="blockG" id="rotateG_07")
+                        div(class="blockG" id="rotateG_08")
+                    
+                
+
+              div(class="quiz" id="quiz" data-toggle="buttons")
+                label(class="element-animation1 btn btn-lg btn-primary btn-block")
+                  span( class="btn-label")
+                  i(class="glyphicon glyphicon-chevron-right") 
+                  input(type="radio" name="q_answer" value="1")
+                  1 One
+                label(class="element-animation2 btn btn-lg btn-primary btn-block")
+                  span( class="btn-label")
+                  i(class="glyphicon glyphicon-chevron-right")
+                  input(type="radio" name="q_answer" value="2")
+                  2 Two
+                label(class="element-animation3 btn btn-lg btn-primary btn-block")
+                  span( class="btn-label")
+                  i(class="glyphicon glyphicon-chevron-right")
+                  input(type="radio" name="q_answer" value="3")
+                  3 Three
+                label(class="element-animation4 btn btn-lg btn-primary btn-block")
+                  span( class="btn-label")
+                  i(class="glyphicon glyphicon-chevron-right")
+                  input(type="radio" name="q_answer" value="4")
+                  4 Four
+            
+        
+              div(class="modal-footer text-muted")
+                span(id="answer")
+    a.btn.btn-primary.btn-lg(href='#') Call to action  
+  main

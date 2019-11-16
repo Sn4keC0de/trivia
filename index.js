@@ -3,7 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 // config
-const port = process.env.PORT        || 3000;
+const port = process.env.PORT        || 8080;
 const db   = process.env.MONGODB_URI || 'mongodb://localhost/trivia';
 
 // objeto app
@@ -96,7 +96,13 @@ app.get('/api/questions', (req, res) => {
   });
 });
 
+
+// para testear nomas
+app.get('/api/mio', (req, res) => {
+  res.json("{ 'nombre': 'tito'}");
+});
+
 // listen
 app.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
+  console.log(`El servidor esta ejecutando en el puerto ${port}`);
 });
